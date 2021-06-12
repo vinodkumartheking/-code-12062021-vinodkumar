@@ -1,5 +1,5 @@
 const restify = require("restify");
-const calculateBMIvalue = require("./calculateBMIvalue");
+const {calculateBMIvalue} = require("./calculateBMIvalue");
 
 function welcomeResponsed(req, res, next) {
   res.send("BMI API is online");
