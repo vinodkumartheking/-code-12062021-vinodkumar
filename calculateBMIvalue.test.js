@@ -31,3 +31,15 @@ test('check risk value for 0 BMI index',()=>{
 test('check risk value for 100000 BMI index',()=>{
     expect(getRiskvalue(100000)).toStrictEqual("Out of Range")
 })
+
+test('calculate BMI index and risk value for empty value',()=>{
+    expect(calculateBMIvalue(" "," ")).toStrictEqual(["NaN", "Not a valid Number"])
+})
+
+test('calculate BMI index and risk value for 0,0 value',()=>{
+    expect(calculateBMIvalue(0,0)).toStrictEqual(["NaN", "Not a valid Number"])
+})
+
+test('calculate BMI index and risk value for NaN,undefinied value',()=>{
+    expect(calculateBMIvalue("undefinied","undefinied")).toStrictEqual(["NaN", "Not a valid Number"])
+})

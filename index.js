@@ -41,6 +41,6 @@ function callBMIfunction(req, res, next) {
   next();
 }
 
-server.listen(3000, function () {
+server.listen(9000, function () {
   console.log("%s listening at %s", server.name, server.url);
 });
