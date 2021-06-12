@@ -2,15 +2,15 @@ function calculateBMIvalue(height, weight) {
   let _resArr = [];
 
   height = parseFloat(height).toFixed(2);
-  weight = parseFloat(height).toFixed(2);
-  let bmiIndex = parseFloat(height / Math.pow(weight, 2).toFixed(2));
+  weight = parseFloat(weight).toFixed(2);
+  let bmiIndex = parseFloat(weight / Math.pow(height/100, 2)).toFixed(2);
   _resArr.push(bmiIndex);
   _resArr.push(getRiskvalue(parseFloat(bmiIndex).toFixed(1)));
   return _resArr;
 }
 
 function getRiskvalue(bmiIndex) {
- 
+ if(typeof(bmiIndex) != "number"){return "Not a valid Number"}
   let _riskValue
   if(bmiIndex<=18.4){_riskValue = "Underweight"}
   if(bmiIndex>18.4 && bmiIndex < 25 ){_riskValue = "Normal weight"}
@@ -22,23 +22,7 @@ function getRiskvalue(bmiIndex) {
   if(_riskValue){return _riskValue}
 
   return "Out of Range";
-  /*
-   let _riskLookupVal = {
-    18.5: "Underweight",
-    25: "Normal",
-    30: "Overweigth",
-    35: "Severely obese",
-    40: "Very Severely obese",
-  };
-  for (let [bmi, risk] of Object.entries(_riskLookupVal)) {
-      if(bmiIndex<=bmi){
-          return '${risk}'
-      }
-    console.log(`${bmi}: ${risk}`);
-  }
-  */
-
   
 }
 
-module.exports = calculateBMIvalue;
+module.exports = calculateBMIvalue, getRiskvalue;

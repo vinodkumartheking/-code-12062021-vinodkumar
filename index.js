@@ -10,13 +10,14 @@ const server = restify.createServer();
 server.use(restify.plugins.bodyParser());
 
 server.get("/", welcomeResponsed);
-//server.head('/hello/:name', respond);
+
 
 server.post("/calculateBMI", callBMIfunction);
 
 function callBMIfunction(req, res, next) {
+   
+  if(req.headers["access-token"]!="pass-Token"){ res.send(401,"Un-Authorized Access token header"); return;}
 
-  console.log(req.headers);
   let _reqPayload = req.body;
 
   if (_reqPayload) {
