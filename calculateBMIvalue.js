@@ -10,7 +10,7 @@ function calculateBMIvalue(height, weight) {
 }
 
 function getRiskvalue(bmiIndex) {
- if(typeof(bmiIndex) != "number"){return "Not a valid Number"}
+ if(!(parseInt(bmiIndex))){return "Not a valid Number"}
   let _riskValue
   if(bmiIndex<=18.4){_riskValue = "Underweight"}
   if(bmiIndex>18.4 && bmiIndex < 25 ){_riskValue = "Normal weight"}
@@ -25,4 +25,4 @@ function getRiskvalue(bmiIndex) {
   
 }
 
-module.exports = calculateBMIvalue, getRiskvalue;
+module.exports = {calculateBMIvalue,getRiskvalue};

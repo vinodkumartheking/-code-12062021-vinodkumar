@@ -21,11 +21,19 @@ function callBMIfunction(req, res, next) {
   let _reqPayload = req.body;
 
   if (_reqPayload) {
+
+    for (const element of _reqPayload) {
+        let _resp = calculateBMIvalue(element["HeightCm"], element["WeightKg"]);
+      element["BMI"] = _resp[0];
+      element["Health risk"] = _resp[1];
+    }
+    /*
     _reqPayload.forEach((element) => {
       let _resp = calculateBMIvalue(element["HeightCm"], element["WeightKg"]);
       element["BMI"] = _resp[0];
       element["Health risk"] = _resp[1];
     });
+    */
     res.send(JSON.stringify(_reqPayload));
   } else {
     res.send("Not a vaild request input");
